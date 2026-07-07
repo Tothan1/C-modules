@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 11:52:15 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/07/06 20:20:49 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/07/07 11:23:02 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,27 @@ Phonebook	add_contact(Phonebook contact, int i)
 	contact.m_contact[i].addContacts(information_user[0], information_user[1], information_user[2], phone, information_user[4]);
 	return(contact);
 }
+void good_display(std::string answer)
+{
+	int size;
 
+	size = answer.size();
+	// std::cout << "size answer: " << size;
+	std::cout << '|';
+	if(size < 10)
+	{
+		for (int i = 0; i < 10 - size; i++)
+			std::cout << ' ';
+		std::cout << answer;
+		// std::cout << "nb_espace:" << 10 - size;
+	}
+	else
+	{
+		for (int i = 0; i < 9; i++)
+			std::cout << answer[i];
+		std::cout << '.';
+	}
+}
 void search_contact(Phonebook contact, int nb_contact)
 {
 	int index;
@@ -45,22 +65,22 @@ void search_contact(Phonebook contact, int nb_contact)
 	std::cout << "     index|";
 	std::cout << "first name|";
 	std::cout << " last name|";
-	std::cout << "  nickname" << std::endl;
+	std::cout << " nickname" << std::endl;
 	for (int i = 0; i < nb_contact; i++)
 	{
-			std::cout << i;
-			std::cout << contact.m_contact[i].getFirst_name();
-			std::cout << contact.m_contact[i].getLast_name();
-			std::cout << contact.m_contact[i].getNickname() << std::endl;
+		std::cout << "         " << i;
+		good_display(contact.m_contact[i].getFirst_name());
+		good_display(contact.m_contact[i].getLast_name());
+		good_display(contact.m_contact[i].getNickname());
+		std::cout << std::endl;
 	}
 	std::cout << "select contact with the index:";
 	std::cin >> index;
-	std::cout << std::endl;
 	if(index >= nb_contact)
-		std::cout << "invalid index:";
+		std::cout << "invalid index:" << std::endl;
 	else
 	{
-		std::cout << "First name: " << contact.m_contact[index].getFirst_name()<< std::endl;
+		std::cout << "Last name: " << contact.m_contact[index].getFirst_name() << std::endl;
 		std::cout << "Last name: " << contact.m_contact[index].getLast_name()<< std::endl;
 		std::cout << "Nickname: " << contact.m_contact[index].getNickname() << std::endl;
 		std::cout << "Phone number: " << contact.m_contact[index].getPhone_number() << std::endl;
