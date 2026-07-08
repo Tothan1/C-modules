@@ -2,33 +2,28 @@
 #include <iostream>
 #include <chrono>
 #include <ctime>
-// Constructor
 
-Account::Account( int initial_deposit )
-{
-
-}
 
 // GET
-static int	Account::getNbAccounts( void )
+int	Account::getNbAccounts( void )
 {
 	return _nbAccounts;
 }
-static int	Account::getTotalAmount( void )
+int	Account::getTotalAmount( void )
 {
 	return _totalAmount;
 }
-static int	Account::getNbDeposits( void )
+int	Account::getNbDeposits( void )
 {
 	return _nbDeposits;
 }
-static int	Account::getNbWithdrawals( void )
+int	Account::getNbWithdrawals( void )
 {
 	return _nbWithdrawals;
 }
 
 // Other méthode
-static void	Account::_displayTimestamp( void )
+void	Account::_displayTimestamp( void )
 {
 	auto now = std::chrono::system_clock::now();
 	std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
@@ -49,32 +44,43 @@ int	Account::checkAmount( void ) const
 }
 
 // Principale méthode
+void	Account::displayStatus( void ) const
+{
+		std::cout << '[' << _displayTimestamp << ']';
+		std::cout << "index:" << _accountIndex;
+		std::cout << "amount:" << _amount;
+		std::cout << ';';
+}
+
 static void	Account::displayAccountsInfos( void )
 {
 	for (int i = 0; i < _nbAccounts; i++)
 	{
-		std::cout << '[' << _displayTimestamp << ']';
-		std::cout << "index:" << _accountIndex;
-		std::cout << "p_amount:" << _displayTimestamp;
-		std::cout << "index:" << _displayTimestamp;
-		std::cout << "index:" << _displayTimestamp;
-		std::cout << "index:" << _displayTimestamp;
-		std::cout << "index:" << _displayTimestamp;
-
-		p_amount:16596;withdrawal:7654;amount:8942;nb_withdrawals:1;
+		std::cout << "deposits:" << _nbDeposits;
+		std::cout << "withdrawals:" << _nbWithdrawals;
 		std::cout << std::endl;
-
 	}
-	
 }
 
-void	Account::displayStatus( void ) const
-{
+// Constructor
 
+Account::Account( int initial_deposit )
+{
+	for (int i = 0; i < _nbAccounts; i++)
+	{
+		Account::displayStatus();
+		std::cout << "created";
+		std::cout << std::endl;
+	}
 }
 
 // Destructor
 Account::~Account( void )
 {
-	
+	for (int i = 0; i < _nbAccounts; i++)
+	{
+		Account::displayStatus();
+		std::cout << "closed";
+		std::cout << std::endl;
+	}
 }
