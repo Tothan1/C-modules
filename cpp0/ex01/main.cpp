@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 11:52:15 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/07/07 16:12:09 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:16:56 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(void)
 	while (1)
 	{
 		std::cout << "command:";
-		std::cin >> input_user;
+		getline(std::cin, input_user);
 		if(std::cin.eof())
 			break;
 		if(input_user == "ADD")

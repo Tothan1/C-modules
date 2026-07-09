@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/09 15:43:38 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/07/09 17:08:07 by tle-rhun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "contact-list.hpp"
 
 Phonebook::Phonebook()
 {
 	nb_contact = 0;
+	current_index = 0;
 }
 
 int Phonebook::getNb_contact()
@@ -17,14 +30,14 @@ void	Phonebook::addContact()
 
 	information_user[0] = "first_name";
 	information_user[1] = "last_name";
-	information_user[2] = "nickname";
+	information_user[2] = " nickname";
 	information_user[3] = "phone_number";
 	information_user[4] = "darkest_secret";
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << information_user[i] << ": ";
-		std::cin >> information_user[i];
-		if(!information_user[i].c_str())
+		getline(std::cin, information_user[i]);
+		if(information_user[i].empty())
 		{
 			std::cout << "empty fields, retry" << std::endl;
 			return;
@@ -35,8 +48,12 @@ void	Phonebook::addContact()
 			ss >> phone;
 		}
 	}
-	m_contact[nb_contact].addContacts(information_user[0], information_user[1], information_user[2], phone, information_user[4]);
-	nb_contact++;
+	if(current_index == 8)
+		current_index = 0;
+	m_contact[current_index].addContacts(information_user[0], information_user[1], information_user[2], phone, information_user[4]);
+	if(nb_contact < 8)
+		nb_contact++;
+	current_index++;
 }
 
 void Phonebook::goodDisplay(std::string answer)
@@ -44,14 +61,12 @@ void Phonebook::goodDisplay(std::string answer)
 	int size;
 
 	size = answer.size();
-	// std::cout << "size answer: " << size;
 	std::cout << '|';
 	if(size < 10)
 	{
 		for (int i = 0; i < 10 - size; i++)
 			std::cout << ' ';
 		std::cout << answer;
-		// std::cout << "nb_espace:" << 10 - size;
 	}
 	else
 	{
@@ -64,11 +79,12 @@ void Phonebook::goodDisplay(std::string answer)
 void Phonebook::searchContact()
 {
 	int index;
+	std::string input_user;
 	std::string to_find;
 	std::cout << "     index|";
 	std::cout << "first name|";
 	std::cout << " last name|";
-	std::cout << " nickname" << std::endl;
+	std::cout << "  nickname" << std::endl;
 	for (int i = 0; i < nb_contact; i++)
 	{
 		std::cout << "         " << i;
@@ -78,9 +94,10 @@ void Phonebook::searchContact()
 		std::cout << std::endl;
 	}
 	std::cout << "select contact with the index:";
-	std::cin >> index;
-	if(index >= nb_contact)
-		std::cout << "invalid index:" << std::endl;
+	getline(std::cin, input_user);
+	std::stringstream ss(input_user);
+	if(!(ss >> index) || index >= nb_contact || index < 0)
+		std::cout << "invalid index!" << std::endl;
 	else
 	{
 		std::cout << "Last name: " << m_contact[index].getFirst_name() << std::endl;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/09 15:43:32 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/07/09 15:43:34 by tle-rhun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "contact-list.hpp"
 void Contacts::addContacts(std::string first_name, std::string last_name, std::string nickname, int phone_number, std::string darkest_secret)
 {

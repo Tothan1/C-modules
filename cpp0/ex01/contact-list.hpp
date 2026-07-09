@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   contact-list.hpp                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/09 15:43:27 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/07/09 16:42:42 by tle-rhun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include <iostream>
 #include <stdlib.h>
 #include <sstream>
@@ -31,8 +43,9 @@ class Phonebook
 	void goodDisplay(std::string answer);
 	void searchContact();
 	int getNb_contact();
-	Contacts m_contact[8];
-
+	
 	private:
+	Contacts m_contact[8];
 	int nb_contact;
+	int current_index;
 };
