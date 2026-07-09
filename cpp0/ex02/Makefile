@@ -1,4 +1,4 @@
-NAME        = contact-list
+NAME        = log
 CXX         = g++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
 SRC_FILES   = tests.cpp \

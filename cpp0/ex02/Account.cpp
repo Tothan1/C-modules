@@ -1,6 +1,7 @@
 #include "Account.hpp"
 #include <iostream>
 #include <ctime>
+#include <iomanip>
 
 
 int	Account::_nbAccounts = 0;
@@ -8,6 +9,7 @@ int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
 
+void displayTimeFormat(int value, int len);
 // GET
 int	Account::getNbAccounts( void )
 {
@@ -31,8 +33,8 @@ void	Account::_displayTimestamp( void )
 {
 	time_t ctime = std::time(NULL);
 	struct tm ntime = *std::localtime(&ctime);
-
-	std::cout << '[' ;
+	
+	std::cout << "[" ;	
 	std::cout << ntime.tm_year + 1900;
 	displayTimeFormat(ntime.tm_mon + 1, 2);
 	displayTimeFormat(ntime.tm_mday, 2);
@@ -40,10 +42,7 @@ void	Account::_displayTimestamp( void )
 	displayTimeFormat(ntime.tm_hour, 2);
 	displayTimeFormat(ntime.tm_min, 2);
 	displayTimeFormat(ntime.tm_sec, 2);
-	std::cout << ']';
-	// auto now = std::chrono::system_clock::now();
-	// std::cout << std::ctime(&currentTime);
-	// std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
+	std::cout << "]" ;
 }
 
 void	Account::makeDeposit( int deposit )
@@ -136,4 +135,9 @@ Account::~Account( void )
 	std::cout << ";amount:" << _amount;
 	std::cout << ";closed";
 	std::cout << std::endl;
+}
+
+void displayTimeFormat(int value, int len)
+{
+	std::cout << std::setfill('0') << std::setw(len) << value;
 }
