@@ -1,5 +1,5 @@
 NAME        = contact-list
-CXX         = g++
+CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
 SRC_FILES   = main.cpp \
 			PhoneBook.cpp \

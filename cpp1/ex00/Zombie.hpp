@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/09 15:20:03 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/07/09 19:15:51 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/07/09 18:37:36 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/07/10 15:32:29 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+# include <iostream>
+#include <stdlib.h>
+#include <sstream>
 
-
-Zombie * test(void)
+class Zombie
 {
-	
-}
+	public:
+	Zombie(std::string nameee);
+	~Zombie();
+	void announce( void) ;
+	Zombie* newZombie( std::string nameee );
+	void randomChump( std::string nameee );
 
-int main (void)
-{
-	
-	std::cout << "after function test";
-	return 0;
-}
+	private:
+	std::string name;
+};

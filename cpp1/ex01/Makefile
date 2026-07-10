@@ -1,8 +1,9 @@
-NAME        = log
+NAME        = Zombie
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
-SRC_FILES   = tests.cpp \
-			Account.cpp
+SRC_FILES   = main.cpp \
+		zombieHorde.cpp \
+		Zombie.cpp
 OBJ_FILES   = $(SRC_FILES:.cpp=.o)
 all: ${NAME}
 

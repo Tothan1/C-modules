@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/09 18:37:36 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/07/09 19:13:58 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/07/09 18:54:51 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/07/10 16:41:29 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <iostream>
-#include <stdlib.h>
-#include <sstream>
-
-class Zombie
+#include "Zombie.hpp"
+Zombie* zombieHorde( int N, std::string namee)
 {
-	public:
-	~Zombie();
-	void announce( void) ;
-	Zombie* newZombie( std::string name );
-	void randomChump( std::string name );
-
-	private:
-	std::string name;
-};
+	Zombie* Horde = new Zombie[N];
+	for (int i = 0; i < N; i++)
+		Horde[i].SetName(namee);
+	return (&Horde[0]);
+}

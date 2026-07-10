@@ -1,10 +1,7 @@
-NAME        = megaphone
+NAME        = Brain
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
-SRC_FILES   = main.cpp \
-		newZombie.cpp \
-		randomChump.cpp \
-		Zombie.cpp
+SRC_FILES   = main.cpp
 OBJ_FILES   = $(SRC_FILES:.cpp=.o)
 all: ${NAME}
 
