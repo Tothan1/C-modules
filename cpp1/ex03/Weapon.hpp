@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 17:23:06 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/07/10 18:59:20 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/07/11 11:49:56 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ private:
 	std::string _type;
 public:
 	Weapon(std::string weapon);
-	~Weapon();
-	std::string & getType();
+	const	std::string & getType() const;
 	void	setType(std::string content);
 };
 #endif

@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 17:32:41 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/07/10 18:59:48 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/07/11 11:52:27 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	Weapon::setType(std::string content)
 	this->_type = content;
 }
 
-std::string & Weapon::getType(void)
+const	std::string & Weapon::getType(void) const
 {
-	std::string &typeREF = this->_type;
-	return(typeREF);
+	return this->_type;
 }

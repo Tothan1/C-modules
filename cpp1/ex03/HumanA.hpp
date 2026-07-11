@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 18:17:30 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/07/10 19:04:57 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/07/11 12:24:47 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 class HumanA
 {
 private:
-	Weapon _weapon;
+	Weapon &_weapon;
 	std::string _name;
 public:
 	void attack();
-	HumanA(std::string name, Weapon typeWeapon);
-	~HumanA();
+	HumanA(std::string name, Weapon &typeWeapon);
 };
 #endif
