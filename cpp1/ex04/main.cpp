@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 16:09:26 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/07/11 18:51:20 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/07 14:21:00 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ std::string getContentFilename(std::string filename)
 		std::cout << "please enter a existing file!" << std::endl;
 		return("");
 	}
-	for (size_t i = 0;getline(ifs, buffer); i++)
+	while(getline(ifs, buffer))
 		contentFilename += buffer + "\n";
 	ifs.close();
 	return(contentFilename);
@@ -37,35 +37,32 @@ void WriteInFilenameReplace(std::string contentFilename, std::string filenameRep
 	int small;
 	int find;
 	int i;
-	int start = 0;
+	int indexstart;
 
 
-	find = 0;
 	s1 = av[2];
 	s2 = av[3];
 	std::ofstream ofs(filenameReplace.c_str());
-	while(contentFilename.find(s1) != std::string::npos && start < 5)
+	while(contentFilename.find(s1) != std::string::npos)
 	{
-		i = contentFilename.find(s1);
+		find = 0;
+		i = 0;
+		indexstart = contentFilename.find(s1);
 		if (s1.size()> s2.size())
 			small = s2.size();
 		else
 			small = s1.size();
 		while ( i < small)
 		{
-			contentFilename[i] = s2[find]; 
+			contentFilename[indexstart] = s2[find]; 
 			find++;
 			i++;
+			indexstart ++;
 		}
 		if(s1.size()> s2.size())
-			contentFilename.erase( i, s1.size()-s2.size());
+			contentFilename.erase( indexstart, s1.size()-s2.size());
 		else if (s1.size() < s2.size())
-		{
-			contentFilename.insert( i, &s2[find]);
-			contentFilename.erase( i + (s2.size()-s1.size()), s1.size());
-		}
-		std::cout << contentFilename<< std::endl;
-		start++;
+			contentFilename.insert( indexstart, &s2[find]);
 	}
 	ofs << contentFilename;
 	ofs.close();
