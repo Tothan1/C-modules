@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 14:33:00 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/07 15:41:28 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/08 11:23:47 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void Harl::complain(std::string check)
 	level[2] = "WARNING";
 	level[3] = "ERROR";
 	void (Harl::*ptr[4]) (void);
-	ptr[0] = &Harl::info;
-	ptr[1] = &Harl::debug;
+	ptr[0] = &Harl::debug;
+	ptr[1] = &Harl::info;
 	ptr[2] = &Harl::warning;
 	ptr[3] = &Harl::error;
 	for (int i = 0; i < 4; i++)
