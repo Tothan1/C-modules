@@ -12,6 +12,29 @@
 
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap(void)
+{
+	Name = "default_name";
+	Hit = 100;
+	Energy = 50;
+	Attack = 20;
+	std::cout << "Default constructor ScavTrap called" << std::endl;
+}
+
+ScavTrap::ScavTrap(ScavTrap const & src)
+{
+	std::cout << "Copy constructor ScavTrap called" << std::endl;
+	*this = src;
+}
+ScavTrap & ScavTrap:: operator=(ScavTrap const & src)
+{
+	std::cout << "Copy assignment operator Scavtrap called" << std::endl;
+	this->Name = src.Name;
+	this->Hit = src.Hit;
+	this->Energy = src.Energy;
+	this->Attack = src.Attack;
+}
+
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20)
 {
 	std::cout << "Constructor ScavTrap called" << std::endl;

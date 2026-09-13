@@ -20,6 +20,7 @@ private:
 	int Energy;
 	int Attack;
 public:
+	ClapTrap();
 	ClapTrap(std::string Name);
 	ClapTrap(ClapTrap const & fixed);
 	ClapTrap & operator=(ClapTrap const & fixed);

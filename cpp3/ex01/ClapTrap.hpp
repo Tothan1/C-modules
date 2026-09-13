@@ -20,6 +20,7 @@ protected:
 	int Energy;
 	int Attack;
 public:
+	ClapTrap();
 	ClapTrap(std::string Name);
 	ClapTrap(std::string Name, int hit, int energy, int attack);
 	ClapTrap(ClapTrap const & fixed);

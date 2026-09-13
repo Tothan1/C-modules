@@ -12,6 +12,29 @@
 
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap(void)
+{
+	Name = "default_name";
+	Hit = 100;
+	Energy = 100;
+	Attack = 30;
+	std::cout << "Default constructor FragTrap called" << std::endl;
+}
+
+FragTrap::FragTrap(FragTrap const & src)
+{
+	std::cout << "Copy constructor FragTrap called" << std::endl;
+	*this = src;
+}
+FragTrap & FragTrap:: operator=(FragTrap const & src)
+{
+	std::cout << "Copy assignment operator Scavtrap called" << std::endl;
+	this->Name = src.Name;
+	this->Hit = src.Hit;
+	this->Energy = src.Energy;
+	this->Attack = src.Attack;
+}
+
 FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30)
 {
 	std::cout << "Constructor FragTrap called" << std::endl;

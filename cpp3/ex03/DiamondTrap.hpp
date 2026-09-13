@@ -22,7 +22,10 @@ class DiamondTrap : public ScavTrap, public FragTrap
 	private:
 		std::string Name;
 	public:
+		DiamondTrap();
 		DiamondTrap(std::string Name);
+		DiamondTrap(DiamondTrap const & src);
+		DiamondTrap & operator=(DiamondTrap const & src);
 		~DiamondTrap(void);
 		void whoAmI();
 		void attack(const std::string& target);
