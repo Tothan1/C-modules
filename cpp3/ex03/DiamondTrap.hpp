@@ -17,10 +17,10 @@
 
 #ifndef Diamond
 #define Diamond
-class DiamondTrap : public FragTrap, public ScavTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
 	private:
-		std::string name;
+		std::string Name;
 	public:
 		DiamondTrap(std::string Name);
 		~DiamondTrap(void);

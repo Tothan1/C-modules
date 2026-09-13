@@ -4,7 +4,8 @@ CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
 SRC_FILES   = main.cpp \
 		ClapTrap.cpp \
 		ScavTrap.cpp \
-		FragTrap.cpp
+		FragTrap.cpp \
+		DiamondTrap.cpp
 OBJ_FILES   = $(SRC_FILES:.cpp=.o)
 all: ${NAME}
 
