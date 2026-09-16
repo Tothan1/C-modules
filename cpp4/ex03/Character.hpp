@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:30:55 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/16 15:49:53 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/16 21:31:57 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Character: public ICharacter
 	int _nb_materia;
 	std::string _name;
 	AMateria * _slots[4];
+	std::vector<AMateria*>  _adress_saved;
 	public:
 	//Form canonical
 	Character();

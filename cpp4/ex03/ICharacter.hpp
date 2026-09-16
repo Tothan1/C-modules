@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:30:55 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/16 15:34:06 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/16 21:36:49 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 class ICharacter
 {
-	
 	public:
 		virtual ~ICharacter() {}
 		virtual std::string const & getName() const = 0;

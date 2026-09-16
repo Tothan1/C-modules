@@ -15,7 +15,7 @@
 //Form canonical
 Cure::Cure()
 {
-	type = "cure";
+	_type = "cure";
 }
 
 

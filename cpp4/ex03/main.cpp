@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 16:09:26 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/16 14:56:20 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/16 20:58:12 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int main()
 	
 	me->use(0, *bob);
 	me->use(1, *bob);
-	
 	delete bob;
 	delete me;
 	delete src;

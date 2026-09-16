@@ -59,10 +59,10 @@ void MateriaSource::learnMateria(AMateria* src)
 
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
-	for (int i = 0; i < _nb_materia; i++)
+	for (int i = 0; i <= _nb_materia; i++)
 	{
-		if(_slots[i]->getType() == type)
-			return (_slots[i]);
+		if(_slots[i] != NULL && _slots[i]->getType() == type)
+			return (_slots[i]->clone());
 	}
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 10:31:35 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/16 16:34:30 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/16 21:33:46 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ Character::~Character()
 		if(this->_slots[i])
 			delete this->_slots[i];
 	}
+	for(int i = 0; i < (int)_adress_saved.size(); i++)
+		delete _adress_saved[i];
 }
 //Other
 Character::Character(std::string name)
@@ -73,20 +75,26 @@ void Character::equip(AMateria* m)
 	int i = 0;
 	if(_nb_materia <= 4)
 	{
-		while(i <= 4 && _slots[i]!= NULL)
+		while(i < 4 && _slots[i]!= NULL)
 			i++;
-		if(_slots[i] == NULL && i <= 4)
+		if(_slots[i] == NULL && i < 4)
+		{
 			_slots[i] = m;
+			_nb_materia++;
+		}
 	}
 }
 void Character::unequip(int idx)
 {
 	if(_nb_materia > 0 && _slots[idx] != NULL)
+	{
+		_adress_saved.push_back(_slots[idx]);
 		_slots[idx] = NULL;
+		_nb_materia--;
+	}
 }
 void Character::use(int idx, ICharacter& target)
 {
 	if(_nb_materia > 0 && _slots[idx] != NULL)
 		_slots[idx]->use(target);
-
 }
