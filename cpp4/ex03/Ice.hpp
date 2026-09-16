@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Ice.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/13 16:47:16 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/15 10:41:25 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/15 17:10:31 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/15 17:12:52 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ex03.hpp"
 
-#include <iostream>
-
-#ifndef Class_animal
-#define Class_animal
-
-class Animal
+class Ice : public AMateria
 {
-protected:
-	std::string type;
-public:
-	Animal();
-	Animal(Animal const &src);
-	Animal & operator=(Animal const & src);
-	virtual ~Animal();
-	std::string getType(void) const;
-	virtual void makeSound() const;
+	protected:
+		std::string type;
+	public:
+		//Form canonical
+		Ice();
+		Ice(Ice const & src);
+		Ice & operator=(Ice const & src);
+		~Ice();
+		//Other
+		virtual Ice* clone() const;
+		virtual void use(ICharacter& target);
 };
-
-#endif
-
-

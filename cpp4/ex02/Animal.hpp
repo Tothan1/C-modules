@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 16:47:16 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/15 10:41:25 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/15 16:53:58 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 	Animal & operator=(Animal const & src);
 	virtual ~Animal();
 	std::string getType(void) const;
-	virtual void makeSound() const;
+	virtual void makeSound() const = 0;
 };
 
 #endif

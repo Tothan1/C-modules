@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/13 16:47:16 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/15 10:41:25 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/15 11:40:52 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/15 15:21:49 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-#ifndef Class_animal
-#define Class_animal
-
-class Animal
+#ifndef Brain_animal
+#define Brain_animal
+class Brain
 {
-protected:
-	std::string type;
+private:
+	std::string ideas[100];
 public:
-	Animal();
-	Animal(Animal const &src);
-	Animal & operator=(Animal const & src);
-	virtual ~Animal();
-	std::string getType(void) const;
-	virtual void makeSound() const;
+	Brain();
+	Brain (Brain const &src);
+	Brain & operator=(Brain const &src);
+	~Brain();
+	void setBrain(int cage, std::string ideas);
+	std::string getBrain(int cage);
 };
 
+
 #endif
-
-

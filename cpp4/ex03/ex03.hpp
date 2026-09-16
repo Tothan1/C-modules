@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   ex03.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/13 16:47:16 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/15 10:41:25 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/16 10:25:47 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/16 11:10:15 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
-#ifndef Class_animal
-#define Class_animal
-
-class Animal
-{
-protected:
-	std::string type;
-public:
-	Animal();
-	Animal(Animal const &src);
-	Animal & operator=(Animal const & src);
-	virtual ~Animal();
-	std::string getType(void) const;
-	virtual void makeSound() const;
-};
-
-#endif
-
-
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"

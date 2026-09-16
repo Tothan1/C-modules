@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 16:47:16 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/15 10:44:59 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/13 16:53:05 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Animal.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include "Brain.hpp"
 
-int main()
+
+#ifndef Class_cat
+#define Class_cat
+class Cat: public Animal
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const WrongAnimal* y = new WrongCat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << y->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->getType();
-	// meta->makeSound();
-	y->makeSound();
+private:
+	Brain* _brain;
+public:
+	Cat();
+	Cat(Cat const &src);
+	Cat & operator=(Cat const & src);
+	~Cat();
+	void makeSound(void) const;
+};
 
-	delete meta;
-	delete j;
-	delete i;
-	delete y;
-	return 0;
-}
+#endif
+

@@ -1,39 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 16:47:16 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/15 10:44:59 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/13 16:55:23 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
 #include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 
-int main()
+//Form canonical
+Cat::Cat(void)
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const WrongAnimal* y = new WrongCat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << y->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->getType();
-	// meta->makeSound();
-	y->makeSound();
-
-	delete meta;
-	delete j;
-	delete i;
-	delete y;
-	return 0;
+	std::cout << "Default constructor Cat." << std::endl;
+	_brain = new Brain();
+	type = "Cat";
+}
+Cat::Cat(Cat const &src) : Animal()
+{
+	*this = src;
+	std::cout << "Copy constructor Cat" << std::endl;
+}
+Cat & Cat::operator=(Cat const & src)
+{
+	std::cout << "Copy assignment operator Cat" << std::endl;
+	this->type = src.type;
+	delete this->_brain;
+	this->_brain = new Brain(*src._brain);
+	return *this;
+}
+Cat::~Cat()
+{
+	std::cout << "Default destructor Cat." << std::endl;
+	delete _brain;
+}
+void Cat::makeSound(void) const
+{
+	std::cout << "Miaou!" << std::endl;
 }

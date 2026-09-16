@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 16:47:16 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/13 19:08:35 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/15 10:41:34 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ public:
 	WrongAnimal();
 	WrongAnimal(WrongAnimal const &src);
 	WrongAnimal & operator=(WrongAnimal const & src);
-	~WrongAnimal();
+	virtual~WrongAnimal();
 	std::string getType(void) const;
 	void makeSound() const;
 };
