@@ -19,19 +19,36 @@ MateriaSource::MateriaSource()
 }
 MateriaSource::MateriaSource(MateriaSource const & src)
 {
-
+	for(int i = 0; i < 4; i++)
+	{
+		this->_slots[i] = NULL;
+		if(src._slots[i])
+			this->_slots[i] = src._slots[i]->clone();
+	}
+	_nb_materia= src._nb_materia;
 }
-MateriaSource & operator=(MateriaSource const & src)
+MateriaSource & MateriaSource::operator=(MateriaSource const & src)
 {
-
+	if(this == &src)
+		return *this;
+	for(int i = 0; i < 4; i++)
+	{
+		if(this->_slots[i])
+			delete this->_slots[i];
+		this->_slots[i] = NULL;
+		if(src._slots[i])
+			this->_slots[i] = src._slots[i]->clone();
+	}
+	_nb_materia= src._nb_materia;
+	return *this;
 }
-~MateriaSource::MateriaSource()
+MateriaSource::~MateriaSource()
 {
 	for(int i = 0; i < _nb_materia; i++)
 		delete _slots[i];
 }
 //Other
-virtual void MateriaSource::learnMateria(AMateria* src)
+void MateriaSource::learnMateria(AMateria* src)
 {
 	if(_nb_materia != 5)
 	{
@@ -40,14 +57,13 @@ virtual void MateriaSource::learnMateria(AMateria* src)
 	}
 }
 
-virtual AMateria* MateriaSource::createMateria(std::string const & type)
+AMateria* MateriaSource::createMateria(std::string const & type)
 {
 	for (int i = 0; i < _nb_materia; i++)
 	{
-		if(_slots[i].getType() == type)
+		if(_slots[i]->getType() == type)
 			return (_slots[i]);
 	}
-	else
-		return 0;
+	return 0;
 }
 

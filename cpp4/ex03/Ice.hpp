@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 #include "ex03.hpp"
 
+#ifndef ICE_HPP
+#define ICE_HPP
+
 class Ice : public AMateria
 {
 	protected:
@@ -25,3 +28,4 @@ class Ice : public AMateria
 		virtual Ice* clone() const;
 		virtual void use(ICharacter& target);
 };
+#endif

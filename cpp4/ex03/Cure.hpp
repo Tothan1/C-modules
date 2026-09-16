@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 #include "ex03.hpp"
 
+#ifndef CURE_HPP
+#define CURE_HPP
+
 class Cure : public AMateria
 {
 	protected:
@@ -25,3 +28,4 @@ class Cure : public AMateria
 		virtual Cure* clone() const;
 		virtual void use(ICharacter& target);
 };
+#endif

@@ -6,11 +6,14 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:30:55 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/16 10:28:42 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/16 15:34:06 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ex03.hpp"
+
+#ifndef ICHARACTER_HPP
+#define ICHARACTER_HPP
 
 class ICharacter
 {
@@ -22,3 +25,4 @@ class ICharacter
 		virtual void unequip(int idx) = 0;
 		virtual void use(int idx, ICharacter& target) = 0;
 };
+#endif

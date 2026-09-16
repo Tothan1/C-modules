@@ -19,13 +19,27 @@ Cure::Cure()
 }
 
 
+Cure::Cure(Cure const & src) : AMateria(src)
+{}
+Cure & Cure::operator=(Cure const & src)
+{
+	if(this == &src)
+		return(*this);
+	_type = src.getType();
+	return *this;
+}
+
+Cure::~Cure()
+{}
 
 
 
 
-
-
+Cure* Cure::clone() const
+{
+	return (new Cure());
+}
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* heals "<< target << "’s wounds *"<<std::endl;
+	std::cout << "* heals "<< target.getName() << "’s wounds *"<<std::endl;
 }

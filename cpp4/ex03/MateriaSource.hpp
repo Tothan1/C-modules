@@ -18,13 +18,16 @@ class MateriaSource : public IMateriaSource
 {
 	private:
 		int _nb_materia;
-		AMateria _slots[4];
+		AMateria * _slots[4];
 	public:
 	//Form canonical
 		MateriaSource();
 		MateriaSource(MateriaSource const & src);
 		MateriaSource & operator=(MateriaSource const & src);
 		~MateriaSource();
+	//Herited
+		virtual void learnMateria(AMateria* src);
+		virtual AMateria* createMateria(std::string const & type);
 };
 
 #endif

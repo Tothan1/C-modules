@@ -2,10 +2,11 @@ NAME        = a.out
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -g
 SRC_FILES   = main.cpp \
-		Animal.cpp \
-		Cat.cpp \
-		Dog.cpp \
-		Brain.cpp 
+		AMateria.cpp \
+		Character.cpp \
+		Cure.cpp \
+		Ice.cpp \
+		MateriaSource.cpp
 OBJ_FILES   = $(SRC_FILES:.cpp=.o)
 all: ${NAME}
 

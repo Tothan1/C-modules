@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 10:31:35 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/16 12:22:25 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/16 16:34:30 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,42 @@ Character::Character()
 {
 	_nb_materia = 0;
 	this->_name = "default name";
+	for (int i = 0; i < 4; i++)
+		_slots[i] = NULL;
 }
 Character::Character(Character const & src)
 {
 	this->_name = src._name;
-	this->_slots = new AMateria(*src._slots);
+	this->_nb_materia = src._nb_materia;
+	for (int i = 0; i < 4; i++)
+	{
+		this->_slots[i] = NULL;
+		if(this->_slots[i] != NULL)
+			this->_slots[i] = src._slots[i]->clone();
+	}
 }
-Character & operator=(Character const & src)
+Character & Character::operator=(Character const & src)
 {
+	if(this == &src)
+		return(*this);
 	this->_name = src._name;
-	delete this->_slots;
-	this->_slots = new AMateria(*src._slots);
+	for (int i = 0; i < 4; i++)
+	{
+		if(this->_slots[i])
+			delete this->_slots[i];
+		this->_slots[i] = NULL;
+		if(src._slots[i])
+			this->_slots[i] = src._slots[i]->clone();
+	}
 	return *this;
 }
-~Character::Character()
+Character::~Character()
 {
-	delete _slots;
+	for (int i = 0; i < 4; i++)
+	{
+		if(this->_slots[i])
+			delete this->_slots[i];
+	}
 }
 //Other
 Character::Character(std::string name)
@@ -40,33 +60,33 @@ Character::Character(std::string name)
 	_nb_materia = 0;
 	this->_name = name;
 	for (int i = 0; i < 4; i++)
-		_slots[i] = 0;
+		_slots[i] = NULL;
 }
 
 //Interface
-virtual std::string const & getName() const
+std::string const & Character::getName() const
 {
 	return _name;
 }
-virtual void equip(AMateria* m)
+void Character::equip(AMateria* m)
 {
+	int i = 0;
 	if(_nb_materia <= 4)
 	{
-		for (int i = 0; i <= 4 && _slots[i] != 0; i++)
-		{
-		}
-		if(_slots[i] == 0 && i <= 4)
+		while(i <= 4 && _slots[i]!= NULL)
+			i++;
+		if(_slots[i] == NULL && i <= 4)
 			_slots[i] = m;
 	}
 }
-virtual void unequip(int idx)
+void Character::unequip(int idx)
 {
-	if(_nb_materia > 0 && _slots[idx] != 0)
-		_slots[idx] = 0;
+	if(_nb_materia > 0 && _slots[idx] != NULL)
+		_slots[idx] = NULL;
 }
-virtual void use(int idx, ICharacter& target)
+void Character::use(int idx, ICharacter& target)
 {
-	if(_nb_materia > 0 && _slots[idx] != 0)
-		_slots[idx].AMateria::use(target);
+	if(_nb_materia > 0 && _slots[idx] != NULL)
+		_slots[idx]->use(target);
 
 }
