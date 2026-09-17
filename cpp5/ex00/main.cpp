@@ -5,31 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/11 16:09:26 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/16 21:38:39 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/17 11:41:50 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/17 16:10:03 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex03.hpp"
-
-int main()
+#include "Bureaucrat.hpp"
+#include <exception>
+int main (void)
 {
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-
-	ICharacter* me = new Character("me");
-	
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-	ICharacter* bob = new Character("bob");
-	
-	me->use(0, *bob);
-	me->use(1, *bob);
-	delete bob;
-	delete me;
-	delete src;
+	try
+	{
+		Bureaucrat tyty("42", 151);
+	}
+	catch (const std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat toto("42", 0);
+	}
+	catch (const std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat toto("tyty", 142);
+		for (int i = 0; i < 10; i++)
+		{
+			toto.decrementGrade();
+			std::cout << toto;
+		}
+	}
+	catch (const std::exception & e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
