@@ -4,6 +4,7 @@ CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -g
 SRC_FILES   = main.cpp \
 		Bureaucrat.cpp \
 		AForm.cpp \
+		Intern.cpp \
 		PresidentialPardonForm.cpp \
 		RobotomyRequestForm.cpp \
 		ShrubberyCreationForm.cpp

@@ -6,17 +6,17 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 18:39:52 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/18 11:21:32 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/18 15:53:07 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include "ShrubberyCreationForm.hpp"
 //Form Canonical
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137), _target("unknow")
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreation", 145, 137), _target("unknow")
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src): AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src): AForm("ShrubberyCreation", 145, 137)
 {
 	*this = src;
 }
@@ -33,7 +33,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 }
 //Other
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreation", 145, 137), _target(target)
 {}
 
 void ShrubberyCreationForm::executeAction(void) const

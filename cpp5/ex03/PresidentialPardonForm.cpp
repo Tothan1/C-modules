@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.cpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,18 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctime>
-#include <cstdlib>
-#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 //Form Canonical
-RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45), _target("unknow")
+PresidentialPardonForm::PresidentialPardonForm(): AForm("PresidentialPardon", 25, 5), _target("unknow")
 {}
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src): AForm("RobotomyRequestForm", 72, 45)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & src): AForm("PresidentialPardon", 25, 5)
 {
 	*this = src;
 }
-RobotomyRequestForm & RobotomyRequestForm::operator=(RobotomyRequestForm const & src)
+PresidentialPardonForm & PresidentialPardonForm::operator=(PresidentialPardonForm const & src)
 {
 	if (this != &src){
 		if (src.getSigned())
@@ -30,21 +28,14 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(RobotomyRequestForm const &
 	}
 	return *this;
 }
-RobotomyRequestForm::~RobotomyRequestForm()
+PresidentialPardonForm::~PresidentialPardonForm()
 {
 }
 //Other
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardon", 25, 5), _target(target)
 {}
 
-void RobotomyRequestForm::executeAction(void) const
+void PresidentialPardonForm::executeAction(void) const
 {
-	int valeur;
-	srand(time(NULL));
-	valeur = rand();
-	std::cout << "Prrr"<<std::endl;
-	if(valeur%2 == 0)
-		std::cout << _target <<"has been robotomized"<< std::endl;
-	else
-		std::cout << _target <<"the robotomy failed"<< std::endl;
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

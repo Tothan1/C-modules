@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                          :+:      :+:    :+:   */
+/*   Intern.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,19 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AForm.hpp"
-class PresidentialPardonForm: public AForm
+#include"AForm.hpp"
+
+class Intern
 {
 private:
-	std::string _target;
+	AForm * Form1(std::string target);
+	AForm * Form2(std::string target);
+	AForm * Form3(std::string target);
 public:
 //Form Canonical
-	PresidentialPardonForm();
-	PresidentialPardonForm(PresidentialPardonForm const & src);
-	PresidentialPardonForm & operator=(PresidentialPardonForm const & src);
-	~PresidentialPardonForm();
+	Intern();
+	Intern(Intern const & src);
+	Intern & operator=(Intern const & src);
+	~Intern();
 //Other
-	PresidentialPardonForm(std::string target);
-	virtual void executeAction(void)const;
+	AForm * makeForm( std::string _form_name, std::string _form_target);
+	std::string cleanName(std::string name);
+//Exeption
+	class InternException : public std::exception 
+		{
+		char const * what() const throw();		
+		};
 };
 

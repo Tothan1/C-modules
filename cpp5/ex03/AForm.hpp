@@ -29,7 +29,7 @@ public:
 	AForm();
 	AForm(AForm const & src);
 	AForm & operator=(AForm const & src);
-	~AForm();
+	virtual ~AForm();
 //Attribute
 	const std::string getName()const;
 	bool getSigned()const;

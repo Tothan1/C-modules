@@ -14,10 +14,10 @@
 #include <cstdlib>
 #include "RobotomyRequestForm.hpp"
 //Form Canonical
-RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45), _target("unknow")
+RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequest", 72, 45), _target("unknow")
 {}
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src): AForm("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src): AForm("RobotomyRequest", 72, 45)
 {
 	*this = src;
 }
@@ -34,7 +34,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 {
 }
 //Other
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequest", 72, 45), _target(target)
 {}
 
 void RobotomyRequestForm::executeAction(void) const
