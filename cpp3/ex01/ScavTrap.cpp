@@ -21,7 +21,7 @@ ScavTrap::ScavTrap(void)
 	std::cout << "Default constructor ScavTrap called" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const & src)
+ScavTrap::ScavTrap(ScavTrap const & src): ClapTrap(src)
 {
 	std::cout << "Copy constructor ScavTrap called" << std::endl;
 	*this = src;
@@ -33,6 +33,7 @@ ScavTrap & ScavTrap:: operator=(ScavTrap const & src)
 	this->Hit = src.Hit;
 	this->Energy = src.Energy;
 	this->Attack = src.Attack;
+	return *this;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20)

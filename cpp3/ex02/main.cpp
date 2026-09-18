@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 16:09:26 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/12 18:02:57 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/19 01:16:32 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ FragTrap y("pola");
 a.attack("");
 y.attack("");
 y.highFivesGuys();
-
+std::cout << "Pointer FragTrap:" << std::endl;
+FragTrap * b = new FragTrap("polo");
+b->highFivesGuys();
+std::cout << "Line before delete FragTrap:" << std::endl;
+delete b;
 return 0;
 }

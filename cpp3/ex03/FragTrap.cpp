@@ -21,7 +21,7 @@ FragTrap::FragTrap(void)
 	std::cout << "Default constructor FragTrap called" << std::endl;
 }
 
-FragTrap::FragTrap(FragTrap const & src)
+FragTrap::FragTrap(FragTrap const & src): ClapTrap(src)
 {
 	std::cout << "Copy constructor FragTrap called" << std::endl;
 	*this = src;
@@ -33,6 +33,7 @@ FragTrap & FragTrap:: operator=(FragTrap const & src)
 	this->Hit = src.Hit;
 	this->Energy = src.Energy;
 	this->Attack = src.Attack;
+	return *this;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30)

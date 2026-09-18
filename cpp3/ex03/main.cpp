@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 16:09:26 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/13 14:08:58 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/19 01:28:21 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ for (int i = 0; i < 25; i++)
 DiamondTrap y("pola");
 y.attack("sdf");
 y.beRepaired(5);
-// y.highFivesGuys();
+y.highFivesGuys();
 y.whoAmI();
 
 return 0;
