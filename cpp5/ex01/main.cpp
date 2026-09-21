@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 11:41:50 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/17 18:32:42 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/21 11:47:55 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int main (void)
 	}
 	try
 	{
-		Bureaucrat toto("toto", 61);
-		Form pass("toto", 60, 61);
+		Bureaucrat toto("toto", 60);
+		Form pass("tata", 60, 61);
 		std::cout << pass;
 		toto.signForm(pass);
 	}

@@ -5,10 +5,7 @@ SRC_FILES   = main.cpp \
 		Animal.cpp \
 		Cat.cpp \
 		Dog.cpp \
-		WrongAnimal.cpp \
-		Brain.cpp \
-		WrongCat.cpp 
-# 		DiamondTrap.cpp
+		Brain.cpp 
 OBJ_FILES   = $(SRC_FILES:.cpp=.o)
 all: ${NAME}
 

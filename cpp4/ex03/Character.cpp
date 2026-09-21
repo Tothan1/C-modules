@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 10:31:35 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/16 21:33:46 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/20 21:50:46 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Character::Character(Character const & src)
 	for (int i = 0; i < 4; i++)
 	{
 		this->_slots[i] = NULL;
-		if(this->_slots[i] != NULL)
+		if(src._slots[i] != NULL)
 			this->_slots[i] = src._slots[i]->clone();
 	}
 }
