@@ -16,6 +16,7 @@
 MateriaSource::MateriaSource()
 {
 	_nb_materia = 0;
+	_nb_adress = 0;
 }
 MateriaSource::MateriaSource(MateriaSource const & src)
 {
@@ -26,6 +27,7 @@ MateriaSource::MateriaSource(MateriaSource const & src)
 			this->_slots[i] = src._slots[i]->clone();
 	}
 	_nb_materia= src._nb_materia;
+	_nb_adress= src._nb_adress;
 }
 MateriaSource & MateriaSource::operator=(MateriaSource const & src)
 {
@@ -46,24 +48,31 @@ MateriaSource::~MateriaSource()
 {
 	for(int i = 0; i < _nb_materia; i++)
 		delete _slots[i];
+	for(int i = 0; i < _nb_adress; i++)
+		delete _adress_saved[i];
 }
 //Other
 void MateriaSource::learnMateria(AMateria* src)
 {
-	if(_nb_materia != 5)
+	if(_nb_materia != 4)
 	{
 		_slots[_nb_materia] = src ;
 		_nb_materia++;
+	}
+	else
+	{
+		_nb_adress++;
+		_adress_saved[_nb_adress - 1] = src;
 	}
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
-	for (int i = 0; i <= _nb_materia; i++)
+	for (int i = 0; i < _nb_materia; i++)
 	{
 		if(_slots[i] != NULL && _slots[i]->getType() == type)
 			return (_slots[i]->clone());
 	}
-	return 0;
+	return NULL;
 }
 

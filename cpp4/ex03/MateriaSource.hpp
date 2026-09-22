@@ -19,6 +19,8 @@ class MateriaSource : public IMateriaSource
 	private:
 		int _nb_materia;
 		AMateria * _slots[4];
+		int _nb_adress;
+		AMateria * _adress_saved[100];
 	public:
 	//Form canonical
 		MateriaSource();

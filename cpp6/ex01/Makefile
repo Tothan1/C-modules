@@ -2,7 +2,8 @@ NAME        = convert
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -g
 SRC_FILES   = main.cpp \
-		ScalarConverter.cpp
+		Serializer.cpp \
+		Data.cpp
 OBJ_FILES   = $(SRC_FILES:.cpp=.o)
 all: ${NAME}
 

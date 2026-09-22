@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 16:23:13 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/22 18:09:36 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/22 18:47:01 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 #include <cstdlib>
 #include <cctype>
 #include <iomanip>
+//Form canonical
+ScalarConverter::ScalarConverter(){}
+ScalarConverter::~ScalarConverter(){}
+ScalarConverter::ScalarConverter(ScalarConverter const &other) {
+	(void) other;
+}
+ScalarConverter &ScalarConverter::operator=(ScalarConverter const &other) {
+	(void) other;
+	return *this;
+}
 
 std::string ScalarConverter::detection_type(std::string src)
 {
@@ -107,7 +117,7 @@ void ScalarConverter::convert(std::string src)
 		if(type == "int" || src.find('.')!=std::string::npos)
 			i_src = static_cast <int> (d_src);
 		if (i_src && (i_src >= 32 && i_src < 127))
-			c_src = i_src; 
+			c_src = i_src;
 	}
 	ScalarConverter::display(c_src, i_src, f_src, d_src, src, type);
 }
