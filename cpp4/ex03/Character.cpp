@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/16 10:31:35 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/20 21:50:46 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/22 10:58:03 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,14 @@ std::string const & Character::getName() const
 void Character::equip(AMateria* m)
 {
 	int i = 0;
-	if(_nb_materia <= 4)
+	if(_nb_materia < 4 && m != NULL)
 	{
+		for (int i = 0; i < 4; i++)
+		{
+			if(_slots[i] == m)
+				return ;
+		}
+		
 		while(i < 4 && _slots[i]!= NULL)
 			i++;
 		if(_slots[i] == NULL && i < 4)
@@ -83,10 +89,19 @@ void Character::equip(AMateria* m)
 			_nb_materia++;
 		}
 	}
+	else if(m != NULL)
+	{
+		for(int i = 0; i < (int)_adress_saved.size(); i++)
+		{
+			if(_adress_saved[i] == m)
+				return ;
+		}
+		_adress_saved.push_back(m);
+	}
 }
 void Character::unequip(int idx)
 {
-	if(_nb_materia > 0 && _slots[idx] != NULL)
+	if(_nb_materia > 0 && _slots[idx] != NULL && idx >= 0 && idx < 4)
 	{
 		_adress_saved.push_back(_slots[idx]);
 		_slots[idx] = NULL;
@@ -95,6 +110,6 @@ void Character::unequip(int idx)
 }
 void Character::use(int idx, ICharacter& target)
 {
-	if(_nb_materia > 0 && _slots[idx] != NULL)
+	if(_nb_materia > 0 && idx >= 0 && idx < 4 && _slots[idx] != NULL)
 		_slots[idx]->use(target);
 }

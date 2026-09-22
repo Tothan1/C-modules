@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 16:09:26 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/16 21:38:39 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/22 10:59:29 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,36 @@ int main()
 	
 	me->use(0, *bob);
 	me->use(1, *bob);
+	
+	
+	/* //Check use equipment with index overload
+	me->use(6, *bob);
+	//ADD test
+	me->equip(tmp); // add for test same ptr on _slots
+	//Check the overload sloats
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	//Check the unequip same sloats
+	me->unequip(4);
+	me->unequip(4);
+	//Check the unequip all sloats
+	me->unequip(3);
+	me->unequip(2);
+	me->unequip(1);
+	me->unequip(0);
+	//Check use equipment empty
+	me->use(0, *bob);
+	me->use(1, *bob);
+	me->use(2, *bob);
+	me->use(3, *bob); */
+	
+
 	delete bob;
 	delete me;
 	delete src;
