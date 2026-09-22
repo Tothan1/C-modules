@@ -1,4 +1,4 @@
-NAME        = Harl
+NAME        = convert
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -g
 SRC_FILES   = main.cpp \
@@ -8,7 +8,7 @@ all: ${NAME}
 
 
 ${NAME} : ${OBJ_FILES}
-	@$(CXX) $(CXXFLAGS) $(OBJ_FILES)
+	@$(CXX) $(CXXFLAGS) $(OBJ_FILES) -o ${NAME}
 
 %.o: %.cpp
 	@${CXX} ${CXXFLAGS} $(INC) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 16:23:13 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/20 19:08:01 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/22 18:09:36 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <string>
 #include <cstdlib>
 #include <cctype>
+#include <iomanip>
 
 std::string ScalarConverter::detection_type(std::string src)
 {
@@ -26,7 +27,7 @@ std::string ScalarConverter::detection_type(std::string src)
 	pseudo_literals[1] = "+inf";
 	pseudo_literals[2] = "-inf";
 	if(src.size() == 0)
-		return ("empty");
+		return ("no_type");
 	if(src.size() == 1 && !std::isdigit(src[0]))
 		return("char");
 	for (int i = 0; i < 3; i++)
@@ -38,7 +39,7 @@ std::string ScalarConverter::detection_type(std::string src)
 	}
 	if(src[0] == '-' || src[0] == '+')
 		index ++;
-	if(src.find('.'))
+	if(src.find('.')!=std::string::npos)
 	{
 		if(src[src.size() - 1]=='f')
 			return("float");
@@ -47,36 +48,66 @@ std::string ScalarConverter::detection_type(std::string src)
 	}
 	else
 	{
-		for (int i = 0; i < src.size()-index; i++)
+		for (size_t i = 0; i < src.size()-index; i++)
 		{
-			if(std::isdigit(src[i] + index))
+			if(std::isdigit(src[i+index] ))
 				return("int");
 		}
 		return ("no_type");
 	}
 }
-void display(char c_src, int i_src, float f_src, double d_src)
+void ScalarConverter::display(char c_src, int i_src, float f_src, double d_src, std::string src, std::string type)
 {
-	std::cout << "char: " << c_src<< std::endl;
-	std::cout << "int: " << i_src<< std::endl;
-	std::cout << "float: " << f_src<< std::endl;
-	std::cout << "double: " << d_src<< std::endl;
+	(void) src;
+	if (i_src && (i_src >= 32 && i_src < 127))
+		std::cout << "char: '" << c_src<< "'"<<std::endl;
+	else if((i_src == 127 || (i_src <32 && i_src >=0)) && type != "no_type")
+		std::cout << "char: " << "Non displayable"<< std::endl;
+	else
+		std::cout << "char: " << "impossible"<< std::endl;
+	if(type != "no_type" && (d_src < 2147483648 &&  d_src > -2147483649))
+		std::cout << "int: " << i_src<< std::endl;
+	else
+		std::cout << "int: " << "impossible"<< std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	if( type != "no_type")
+	{
+		std::cout << "float: " << f_src<<"f"<<std::endl;
+		std::cout  << "double: " << d_src<<std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << "impossible"<<std::endl;
+		std::cout  << "double: " << "impossible"<<std::endl;
+	}
 }
 
 void ScalarConverter::convert(std::string src)
 {
-	char const * tab_src;
-
-	ScalarConverter::detection_type(src);
-	char c_src;
+		char c_src;
 	int i_src;
 	float f_src;
 	double d_src;
+	char const * tab_src;
+	std::string type;
 
+	type = ScalarConverter::detection_type(src);
 	tab_src = src.c_str();
-	c_src = static_cast <char> (tab_src[0]);
-	// i_src = static_cast <int> (tab_src);
-	d_src = std::atof(tab_src);
-	f_src = static_cast <float> (d_src);
-	i_src = static_cast <int> (d_src);
+	if(type == "char")
+	{
+		c_src = tab_src[0]; 
+		d_src = c_src ;
+		f_src = static_cast <float> (d_src);
+		i_src = static_cast <int> (d_src);
+	}
+	else if( type == "float" || type == "double" || type == "int")
+	{
+		d_src = std::atof(tab_src) ;
+		f_src = static_cast <float> (d_src);
+		if(type == "int" || src.find('.')!=std::string::npos)
+			i_src = static_cast <int> (d_src);
+		if (i_src && (i_src >= 32 && i_src < 127))
+			c_src = i_src; 
+	}
+	ScalarConverter::display(c_src, i_src, f_src, d_src, src, type);
 }
