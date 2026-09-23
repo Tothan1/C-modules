@@ -10,19 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class Data
+#include <stdint.h>
+#ifndef DATA_HPP
+#define DATA_HPP
+struct Data
 {
-private:
 	/* data */
-public:
-	//Form canonical
-	Data();
-	Data(Data const & other);
-	Data &operator=(Data const & other);
-	~Data();
-	//Other
-	uintptr_t serialize(Data* ptr);
-	Data* deserialize(uintptr_t raw);
+	int _nb;
 };
+#endif
 
 

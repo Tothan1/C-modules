@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.cpp                                     :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/22 19:02:28 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/22 19:02:38 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/08/02 17:58:38 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/08/10 08:14:56 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Data.hpp"
+#include "Harl.hpp"
 
-//Form canonical
-Data::Data()
-{
-}
-Data::Data(Data const & other)
 
+int main(int ac, char **av)
 {
+	Harl harl;
 
-}
-Data & Data::operator=(Data const & other)
-{
-}
-Data::~Data()
-{
+	if(ac != 2)
+	{
+		std::cout << "Enter just a one parameter!!!" << std::endl;
+		return (1);
+	}
+
+	harl.complain(std::string(av[1]));
+	return 0;
 }
