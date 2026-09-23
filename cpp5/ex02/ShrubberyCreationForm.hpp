@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 14:31:09 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:10 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/17 18:39:59 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/18 11:20:37 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL
-#define HARL
-#include <iostream>
-
-class Harl
+#include "AForm.hpp"
+class ShrubberyCreationForm: public AForm
 {
-	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-	public:
-		void complain( std::string level );
+private:
+	std::string _target;
+public:
+//Form Canonical
+	ShrubberyCreationForm();
+	ShrubberyCreationForm(ShrubberyCreationForm const & src);
+	ShrubberyCreationForm & operator=(ShrubberyCreationForm const & src);
+	~ShrubberyCreationForm();
+//Other
+	ShrubberyCreationForm(std::string target);
+	virtual void executeAction(void)const;
 };
-#endif
+

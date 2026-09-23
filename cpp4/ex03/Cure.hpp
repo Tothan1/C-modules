@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Cure.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 14:31:09 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:10 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/15 17:10:31 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/15 17:12:52 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ex03.hpp"
 
-#ifndef HARL
-#define HARL
-#include <iostream>
+#ifndef CURE_HPP
+#define CURE_HPP
 
-class Harl
+class Cure : public AMateria
 {
-	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
+	protected:
+		std::string type;
 	public:
-		void complain( std::string level );
+		//Form canonical
+		Cure();
+		Cure(Cure const & src);
+		Cure & operator=(Cure const & src);
+		~Cure();
+		//Other
+		virtual Cure* clone() const;
+		virtual void use(ICharacter& target);
 };
 #endif

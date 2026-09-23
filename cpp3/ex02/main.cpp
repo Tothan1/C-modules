@@ -6,21 +6,31 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 16:09:26 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:06 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/19 01:16:32 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include "Harl.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-int main (void)
+int main( void ) {
+ClapTrap a("tyty");
+for (int i = 0; i < 25; i++)
 {
-	Harl test;
-	test.complain("sldf");
-	test.complain("DEBUG");
-	test.complain("INFO");
-	test.complain("WARNING");
-	test.complain("ERROR");
+	a.takeDamage(5);
+}
+ScavTrap u("polo");
+u.attack("");
+u.guardGate();
+
+FragTrap y("pola");
+a.attack("");
+y.attack("");
+y.highFivesGuys();
+std::cout << "Pointer FragTrap:" << std::endl;
+FragTrap * b = new FragTrap("polo");
+b->highFivesGuys();
+std::cout << "Line before delete FragTrap:" << std::endl;
+delete b;
+return 0;
 }

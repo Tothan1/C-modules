@@ -1,0 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MateriaSource.hpp                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/16 10:48:03 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/16 10:48:43 by tle-rhun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ex03.hpp"
+#ifndef MaterialSource_H
+#define MaterialSource_H
+
+class MateriaSource : public IMateriaSource
+{
+	private:
+		int _nb_materia;
+		AMateria * _slots[4];
+		int _nb_adress;
+		AMateria * _adress_saved[100];
+	public:
+	//Form canonical
+		MateriaSource();
+		MateriaSource(MateriaSource const & src);
+		MateriaSource & operator=(MateriaSource const & src);
+		~MateriaSource();
+	//Herited
+		virtual void learnMateria(AMateria* src);
+		virtual AMateria* createMateria(std::string const & type);
+};
+
+#endif

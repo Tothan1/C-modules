@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 14:31:09 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:10 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/13 16:47:16 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/13 16:53:05 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL
-#define HARL
 #include <iostream>
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-class Harl
+#ifndef Class_dog
+#define Class_dog
+class Dog: public Animal
 {
-	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-	public:
-		void complain( std::string level );
+private:
+	Brain * _brain;
+public:
+	Dog();
+	Dog(Dog const &src);
+	Dog & operator=(Dog const & src);
+	~Dog();
+	void makeSound(void) const;
+	void setBraindog(int cage, std::string ideas);
+	std::string getBraindog(int cage);
 };
+
 #endif
+

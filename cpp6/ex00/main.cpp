@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 14:31:09 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:10 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/17 11:41:50 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/22 14:50:13 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL
-#define HARL
-#include <iostream>
+#include "ScalarConverter.hpp"
 
-class Harl
+int main (int ac, char **av)
 {
-	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-	public:
-		void complain( std::string level );
-};
-#endif
+	std::string parameters;
+	if(ac == 2)
+	{
+		parameters = static_cast <std::string> (av[1]);
+		ScalarConverter::convert(parameters);
+	}
+	else
+	{
+		std::cout << "please enter just a one parameters!";
+		return 0;
+	}
+}

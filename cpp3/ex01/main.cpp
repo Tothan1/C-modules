@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 14:31:09 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:10 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/07/11 16:09:26 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/19 01:03:39 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL
-#define HARL
-#include <iostream>
+#include "ScavTrap.hpp"
 
-class Harl
+int main( void ) {
+ClapTrap a("tyty");
+ClapTrap b( a );
+ClapTrap c("toto");
+c = b;
+for (int i = 0; i < 25; i++)
 {
-	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-	public:
-		void complain( std::string level );
-};
-#endif
+	a.takeDamage(5);
+}
+ScavTrap * u = new ScavTrap("polo");
+u->attack("other");
+u->guardGate();
+delete u;
+c.attack("enemies");
+return 0;
+}

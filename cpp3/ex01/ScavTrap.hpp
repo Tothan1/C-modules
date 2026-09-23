@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 14:31:09 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:10 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/08 12:48:00 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/08 16:36:59 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL
-#define HARL
+#include "ClapTrap.hpp"
 #include <iostream>
 
-class Harl
+class ScavTrap : public ClapTrap
 {
-	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-	public:
-		void complain( std::string level );
+public:
+	ScavTrap();
+	ScavTrap(std::string Name);
+	ScavTrap(ScavTrap const & src);
+	ScavTrap & operator=(ScavTrap const & src);
+	~ScavTrap(void);
+	void guardGate();
+	void attack(const std::string& target);
 };
-#endif
+

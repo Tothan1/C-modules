@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 14:31:09 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:10 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/13 16:47:16 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/15 10:41:34 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL
-#define HARL
 #include <iostream>
 
-class Harl
+#ifndef Class_wrong_animal
+#define Class_wrong_animal
+
+class WrongAnimal
 {
-	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-	public:
-		void complain( std::string level );
+protected:
+	std::string type;
+public:
+	WrongAnimal();
+	WrongAnimal(WrongAnimal const &src);
+	WrongAnimal & operator=(WrongAnimal const & src);
+	virtual~WrongAnimal();
+	std::string getType(void) const;
+	void makeSound() const;
 };
+
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 16:09:26 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/08/02 16:01:50 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/23 18:43:13 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void WriteInFilenameReplace(std::string contentFilename, std::string filenameRep
 
 	s1 = av[2];
 	s2 = av[3];
+	if(s1.size() == 0 || s2.size() == 0)
+	{
+		std::cerr << "Enter a field argument!" << std::endl;
+		return ;
+	}
 	std::ofstream ofs(filenameReplace.c_str());
 	while(contentFilename.find(s1) != std::string::npos)
 	{

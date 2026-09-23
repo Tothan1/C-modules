@@ -1,0 +1,28 @@
+NAME        = a.out
+CXX         = c++
+CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -g
+SRC_FILES   = main.cpp \
+		AMateria.cpp \
+		Character.cpp \
+		Cure.cpp \
+		Ice.cpp \
+		MateriaSource.cpp
+OBJ_FILES   = $(SRC_FILES:.cpp=.o)
+all: ${NAME}
+
+
+${NAME} : ${OBJ_FILES}
+	@$(CXX) $(CXXFLAGS) $(OBJ_FILES)
+
+%.o: %.cpp
+	@${CXX} ${CXXFLAGS} $(INC) -c $< -o $@
+
+clean:
+	@rm -f ${OBJ_FILES} ${BONUS_OBJ_FILES}
+
+fclean: clean
+	@rm -f a.out
+
+re: fclean all
+
+.PHONY: all clean fclean re  

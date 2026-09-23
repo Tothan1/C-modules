@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 14:31:09 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:10 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/17 18:39:59 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/17 19:32:18 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL
-#define HARL
-#include <iostream>
-
-class Harl
+#include "AForm.hpp"
+class RobotomyRequestForm: public AForm
 {
-	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-	public:
-		void complain( std::string level );
+private:
+	std::string _target;
+public:
+//Form Canonical
+	RobotomyRequestForm();
+	RobotomyRequestForm(RobotomyRequestForm const & src);
+	RobotomyRequestForm & operator=(RobotomyRequestForm const & src);
+	~RobotomyRequestForm();
+//Other
+	RobotomyRequestForm(std::string target);
+	virtual void executeAction(void)const;
 };
-#endif
+

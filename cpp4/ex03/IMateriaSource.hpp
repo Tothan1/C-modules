@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 14:31:09 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:10 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/16 10:48:03 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/16 15:03:21 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL
-#define HARL
-#include <iostream>
+#include "ex03.hpp"
 
-class Harl
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
+
+class IMateriaSource
 {
-	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
 	public:
-		void complain( std::string level );
+		virtual ~IMateriaSource() {}
+		virtual void learnMateria(AMateria* src) = 0;
+		virtual AMateria* createMateria(std::string const & type) = 0;
 };
 #endif

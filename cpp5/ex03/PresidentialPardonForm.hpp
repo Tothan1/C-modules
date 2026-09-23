@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 14:31:09 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:10 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/17 18:39:59 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/17 19:32:18 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL
-#define HARL
-#include <iostream>
-
-class Harl
+#include "AForm.hpp"
+class PresidentialPardonForm: public AForm
 {
-	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-	public:
-		void complain( std::string level );
+private:
+	std::string _target;
+public:
+//Form Canonical
+	PresidentialPardonForm();
+	PresidentialPardonForm(PresidentialPardonForm const & src);
+	PresidentialPardonForm & operator=(PresidentialPardonForm const & src);
+	~PresidentialPardonForm();
+//Other
+	PresidentialPardonForm(std::string target);
+	virtual void executeAction(void)const;
 };
-#endif
+

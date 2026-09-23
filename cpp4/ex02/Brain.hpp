@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 14:31:09 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/23 18:43:10 by tle-rhun         ###   ########.fr       */
+/*   Created: 2026/09/15 11:40:52 by tle-rhun          #+#    #+#             */
+/*   Updated: 2026/09/15 15:21:49 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL
-#define HARL
 #include <iostream>
 
-class Harl
+#ifndef Brain_animal
+#define Brain_animal
+class Brain
 {
-	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
-	public:
-		void complain( std::string level );
+private:
+	std::string ideas[100];
+public:
+	Brain();
+	Brain (Brain const &src);
+	Brain & operator=(Brain const &src);
+	~Brain();
+	void setBrain(int cage, std::string ideas);
+	std::string getBrain(int cage);
 };
+
+
 #endif
