@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 16:23:13 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/22 18:47:01 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/23 21:55:37 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,9 @@ std::string ScalarConverter::detection_type(std::string src)
 		return ("no_type");
 	}
 }
-void ScalarConverter::display(char c_src, int i_src, float f_src, double d_src, std::string src, std::string type)
+void ScalarConverter::display(char c_src, int i_src, float f_src, double d_src, std::string type)
 {
-	(void) src;
-	if (i_src && (i_src >= 32 && i_src < 127))
+	if (i_src >= 32 && i_src < 127)
 		std::cout << "char: '" << c_src<< "'"<<std::endl;
 	else if((i_src == 127 || (i_src <32 && i_src >=0)) && type != "no_type")
 		std::cout << "char: " << "Non displayable"<< std::endl;
@@ -114,10 +113,10 @@ void ScalarConverter::convert(std::string src)
 	{
 		d_src = std::atof(tab_src) ;
 		f_src = static_cast <float> (d_src);
-		if(type == "int" || src.find('.')!=std::string::npos)
-			i_src = static_cast <int> (d_src);
+		// if(type == "int" || src.find('.')!=std::string::npos)
+		i_src = static_cast <int> (d_src);
 		if (i_src && (i_src >= 32 && i_src < 127))
-			c_src = i_src;
+			c_src = static_cast <char>(i_src);
 	}
-	ScalarConverter::display(c_src, i_src, f_src, d_src, src, type);
+	ScalarConverter::display(c_src, i_src, f_src, d_src, type);
 }
