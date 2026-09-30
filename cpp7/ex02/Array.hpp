@@ -6,7 +6,7 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 10:55:53 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/29 18:25:03 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/09/30 11:12:15 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ class Array
 private:
 	T* tab;
 	unsigned int _len_tab;
+
+	void copy_tab(Array const & src, int len_tab)
+	{
+		for (int i = 0; i < len_tab; i++)
+			this->tab[i] = src.tab[i];
+	}
 public:
 	//Form Canonical
 	Array() :_len_tab(0)
@@ -25,17 +31,20 @@ public:
 		tab = new T[_len_tab]();
 	}
 
-	Array(Array const & src) :Array()
+	Array(Array const & src)
 	{
-		this->tab = src.tab;
+		this->tab = new T[src._len_tab]();
 		this->_len_tab = src._len_tab;
+		copy_tab(src, _len_tab);
 	}
-	Array & operator=(Array const & src):Array()
+	Array & operator=(Array const & src)
 	{
 		if( &src == this)
 			return *this;
-		this->tab = src.tab;
+		delete [] tab;
+		this->tab =  new T[src._len_tab]();
 		this->_len_tab = src._len_tab;
+		copy_tab(src, _len_tab);
 		return *this;
 	}
 	~Array()
@@ -62,6 +71,12 @@ public:
 	};
 	//Operator
 	T & operator[](int len)
+	{
+		if( len < 0 || len >= (int)_len_tab)
+			throw Array::Badindex();
+		return (tab[len]);
+	}
+	const T & operator[](int len) const
 	{
 		if( len < 0 || len >= (int)_len_tab)
 			throw Array::Badindex();
