@@ -9,14 +9,15 @@ Span::Span(void): N(0)
 // Copy constructor
 Span::Span(const Span &other)
 {
-    (void) other;
+    *this = other;
     return ;
 }
 
 // Assignment operator overload
 Span &Span::operator=(const Span &other)
 {
-    (void) other;
+    this->N = other.N;
+    this->tab = other.tab;
     return (*this);
 }
 

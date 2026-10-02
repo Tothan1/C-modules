@@ -6,101 +6,67 @@
 /*   By: tle-rhun <tle-rhun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 11:00:55 by tle-rhun          #+#    #+#             */
-/*   Updated: 2026/09/30 11:20:12 by tle-rhun         ###   ########.fr       */
+/*   Updated: 2026/10/02 19:00:23 by tle-rhun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+#include "MutantStack.hpp"
 #include <iostream>
 #include <string>
-
-
-
-int main( void )
+#include <stack>
+#include <list>
+int main()
 {
-	std::cout << "--- Test 1 : Tableau vide ---"<< std::endl;
-	Array<std::string> empty;
-	std::cout << empty.size()<< std::endl;
-	try
+	std::cout << "---Test of subject" <<std::endl;
+	MutantStack<int> mstack;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.size() << std::endl;
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	//[...]
+	mstack.push(0);
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite)
 	{
-		std::cout << empty[0]<< std::endl;
+	std::cout << *it << std::endl;
+	++it;
 	}
-	catch(const std::exception& e)
+	mstack.push(42);
+	std::cout<< mstack.top()<<std::endl;
+
+	std::stack<int> s(mstack);
+
+
+	std::cout << std::endl<<"---Test with std::list" <<std::endl;
+	std::list<int> mlist;
+	mlist.push_back(5);
+	mlist.push_back(17);
+	std::cout << mlist.back() << std::endl;
+	mlist.pop_back();
+	std::cout << mlist.size() << std::endl;
+	mlist.push_back(3);
+	mlist.push_back(5);
+	mlist.push_back(737);
+	//[...]
+	mlist.push_back(0);
+	std::list<int>::iterator itlist = mlist.begin();
+	std::list<int>::iterator itliste = mlist.end();
+	++it;
+	--it;
+	while (itlist != itliste)
 	{
-		std::cerr << e.what() << '\n';
+	std::cout << *itlist << std::endl;
+	++itlist;
 	}
-	
-
-	std::cout << "--- Test 2 : Tableau d'entiers et initialisation ---"<< std::endl;
-	Array<int> nb(3);
-	for (size_t i = 0; i < 3; i++)
-		std::cout << nb[i];
-	std::cout << std::endl;
-	for (size_t i = 0; i < 3; i++)
-		nb[i]+=i*10 + 10;
-	for (size_t i = 0; i < 3; i++)
-		std::cout << nb[i];
-	std::cout << std::endl;
-
-	std::cout << "--- Test 3 : Indépendance des copies (Deep Copy) ---"<< std::endl;
-	Array<int> copy(nb);
-	Array<int> assigned;
-	assigned = nb;
-	nb[0] =99;
-
-	std::cout << "tab numbers" <<std::endl;
-	for (size_t i = 0; i < 3; i++)
-			std::cout << nb[i];
-		std::cout << std::endl;
-
-	std::cout << "tab copy" <<std::endl;
-	for (size_t i = 0; i < 3; i++)
-			std::cout << copy[i];
-		std::cout << std::endl;
-
-	std::cout << "tab assigned" <<std::endl;
-	for (size_t i = 0; i < 3; i++)
-		std::cout << assigned[i];
-	std::cout << std::endl;
-
-		
-	std::cout << "--- Test 4 : Gestion des bornes ---"<< std::endl;
-	try
-	{
-		std::cout << "Index -1:";
-		nb[-1];
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		std::cout << "Index 3(size of tab is " << nb.size()<< " ):";
-		nb[3];
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
-	std::cout << "--- Test 5 : Types non primitifs (std::string) ---"<< std::endl;
-	Array<std::string> str(2);
-
-	str[0] = "Hello ";
-	str[1] = "Word!";
-	for (size_t i = 0; i < 2; i++)
-		std::cout << str[i];
-	std::cout << std::endl;
-
-	std::cout << "--- Test 6 : Try to modify Array const ---"<< std::endl;
-	Array<int> const test(3);
-	for (size_t i = 0; i < 3; i++)
-		std::cout << test[i];
-	// std::cout << std::endl;
-	// for (size_t i = 0; i < 3; i++)
-	// 	test[i]+=i*10 + 10;
-	// for (size_t i = 0; i < 3; i++)
-	// 	std::cout << test[i];
-	std::cout << std::endl;
+	mlist.push_back(42);
+	std::cout<< mlist.back()<<std::endl;
+	std::list<int> a(mlist);
+	return 0;
 }
